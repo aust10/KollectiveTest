@@ -59,7 +59,7 @@ function PokeForm (props) {
               history.push('/CatchPoke')
             }}
           >
-          Change Name
+          Change Name/ Add
           </Button>
           <Button
             variant='outlined'
