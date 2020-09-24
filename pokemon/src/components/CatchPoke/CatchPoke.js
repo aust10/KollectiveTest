@@ -69,8 +69,7 @@ const useStyles = makeStyles({
 
   },
   catchPoke: {
-    backgroundColor: '#6CA8FE',
-    height: '100vh'
+    backgroundColor: '#6CA8FE'
   }
 })
 

@@ -35,7 +35,7 @@ const useStyles = makeStyles({
   },
   backround: {
     backgroundColor: '#6CA8FE',
-    height: '100vh'
+    minHeight: '100vh'
   }
 })
 
