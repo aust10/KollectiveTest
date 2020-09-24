@@ -32,10 +32,10 @@ function CatchPoke (props) {
             ? PokemonStore.pokemon.map(pokemon => (
               <>
                 <h3
-                  onClick={() => PokemonStore.Selected(pokemon.url, pokemon.name)}
+                  onClick={() => PokemonStore.Selected(pokemon)}
                   key={pokemon.name}
                 >
-                  {pokemon.name.toUpperCase()}
+                  <img src={pokemon.sprites.front_default} alt={pokemon.name.toUpperCase()} />  {pokemon.name.toUpperCase()}
                 </h3>
                 {PokemonStore.selected.name === pokemon.name
                   ? <Button
@@ -43,7 +43,7 @@ function CatchPoke (props) {
                     onClick={() => history.push('/PokeForm')}
                   >
               Catch Pokemon
-                </Button>
+                  </Button>
                   : null}
               </>
             ))

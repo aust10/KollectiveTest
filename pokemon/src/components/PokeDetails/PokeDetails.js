@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { TextField, Button, Card, makeStyles } from '@material-ui/core'
 import { usePokemonStore } from '../../Store/StoreContext'
-import { inject, useObserver, observer } from 'mobx-react'
+import { useObserver } from 'mobx-react'
 
 function PokeDetails (props) {
   // initilize the store and styles

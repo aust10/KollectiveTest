@@ -11,6 +11,8 @@ function CaughtPoke (props) {
   // initilize the store and styles
   const PokemonStore = usePokemonStore()
   const styles = useStyles()
+
+  // console.log(PokemonStore.caughtPokemon, 'check the data')
   return useObserver(() => (
     <>
       <main className={styles.root}>
@@ -22,13 +24,14 @@ function CaughtPoke (props) {
                 {console.log(pokemon, 'check check')}
                 <h3
                   onClick={() => {
-                    PokemonStore.Selected(pokemon.url, pokemon.name)
+                    PokemonStore.Selected(pokemon)
                     setActive(true)
                   }}
                   key={pokemon.name}
                 >
-                  {pokemon.name.toUpperCase()}
+                  <img src={pokemon.sprites.front_default} alt={pokemon.name.toUpperCase()} /> {pokemon.name.toUpperCase()}
                 </h3>
+                <p><i>Original Name: </i>{pokemon.forms[0].name}</p>
               </div>
             ))
             : <p>No Pokemon To Display</p>}

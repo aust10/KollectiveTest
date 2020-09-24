@@ -2,7 +2,7 @@
 export function createPokemonStore () {
   return {
     // This is the stored state
-    pokemon: null,
+    pokemon: [],
     active: false,
     selected: {
       name: '',
@@ -23,28 +23,29 @@ export function createPokemonStore () {
       )
         .then(response => response.json())
         .then(data => {
-          this.pokemon = data.results
+          data.results.forEach(item => {
+            fetch(
+              `${item.url}`,
+              {
+                method: 'get'
+              }
+            )
+              .then(response => response.json())
+              .then(data => (this.pokemon.push(data)))
+          })
+          // console.log(data, 'this is yoru data')
+          // this.pokemon = data.results
         })
     },
 
     // Function that takes in the pokemons url and name to set the pokemons types and abilites in the selected state
-    Selected (url, name) {
-      fetch(
-        `${url}`,
-        {
-          method: 'get'
-        }
-      )
-        .then(response => response.json())
-        .then(data => {
-          console.log(data,'data')
-          this.selected = {
-            name: name,
-            selected: true,
-            type: data.types,
-            ability: data.abilities
-          }
-        })
+    Selected (pokemon) {
+      this.selected = {
+        name: pokemon.name,
+        selected: true,
+        type: pokemon.types,
+        ability: pokemon.abilities
+      }
     },
 
     // Function that checks to see if the pokemon is selected and then changes the name if desired and moves it to the caught pokemon arr
@@ -53,7 +54,6 @@ export function createPokemonStore () {
         if (item.name === name.selected.name) {
           item.name = name.name
           const caughtPoke = this.pokemon.splice(this.pokemon.indexOf(item), 1)
-          console.log(caughtPoke[0], 'Caught poke')
           this.caughtPokemon.push(caughtPoke[0])
           return this.pokemon
         }
