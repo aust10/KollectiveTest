@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { TextField, Button, Card, makeStyles } from '@material-ui/core'
 import { usePokemonStore } from '../../Store/StoreContext'
+import { inject, useObserver, observer } from 'mobx-react'
 
 function PokeDetails (props) {
   // initilize the store and styles
@@ -21,8 +22,8 @@ function PokeDetails (props) {
       [evt.target.name]: evt.target.value
     })
   }
-  return (
-    <div>
+  return useObserver(() => (
+    <div className={styles.pokeDetails}>
       <Card className={styles.root}>
         <h1 className={styles.header}>{pokemon.selected.name}</h1>
         <hr />
@@ -72,14 +73,15 @@ function PokeDetails (props) {
         </form>
       </Card>
     </div>
-  )
+  ))
 }
 
 const useStyles = makeStyles({
   root: {
-    width: '90%',
+    width: '100%',
     margin: '0 auto',
     padding: 10
+
   },
   details: {
     display: 'flex',
@@ -95,3 +97,4 @@ const useStyles = makeStyles({
 })
 
 export default PokeDetails
+

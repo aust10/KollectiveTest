@@ -1,7 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Home from './components/Home/Home'
-import { Button } from '@material-ui/core'
 import CatchPoke from './components/CatchPoke/CatchPoke'
 import PokeForm from './components/PokeForm/PokeForm'
 import PokeDetails from './components/PokeDetails/PokeDetails'

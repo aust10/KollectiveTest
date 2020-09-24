@@ -1,6 +1,5 @@
 
 export function createPokemonStore () {
-
   return {
     // This is the stored state
     pokemon: null,
@@ -61,7 +60,7 @@ export function createPokemonStore () {
       })
     },
 
-    // Function that allows User to change the pokemon name if desired on the caught pokemon list 
+    // Function that allows User to change the pokemon name if desired on the caught pokemon list
     ChangeCaughtPokeName (name) {
       this.caughtPokemon.forEach(item => {
         if (item.name === name.selected.name) {

@@ -1,6 +1,6 @@
 import { useObserver } from 'mobx-react'
 import React, { useEffect } from 'react'
-import { Button, makeStyles } from '@material-ui/core'
+import { Button, Card, makeStyles } from '@material-ui/core'
 import { usePokemonStore } from '../../Store/StoreContext'
 
 function CatchPoke (props) {
@@ -15,38 +15,41 @@ function CatchPoke (props) {
   }, [])
 
   return useObserver(() => (
-    <div>
-      <header className={styles.header}>
-        <h1>Catch Pokemon</h1>
-        <Button
-          variant='outlined'
-          onClick={() => history.push('/')}
-        >
+    <div className={styles.catchPoke}>
+      <Card className={styles.root}>
+        <header className={styles.header}>
+
+          <h1>Catch Pokemon</h1>
+          <Button
+            variant='outlined'
+            onClick={() => history.push('/')}
+          >
           Home
-        </Button>
-      </header>
-      <main className={styles.main}>
-        {PokemonStore.pokemon
-          ? PokemonStore.pokemon.map(pokemon => (
-            <>
-              <h3
-                onClick={() => PokemonStore.Selected(pokemon.url, pokemon.name)}
-                key={pokemon.name}
-              >
-                {pokemon.name}
-              </h3>
-              {PokemonStore.selected.name === pokemon.name
-                ? <Button
-                  variant='outlined'
-                  onClick={() => history.push('/PokeForm')}
+          </Button>
+        </header>
+        <main className={styles.main}>
+          {PokemonStore.pokemon
+            ? PokemonStore.pokemon.map(pokemon => (
+              <>
+                <h3
+                  onClick={() => PokemonStore.Selected(pokemon.url, pokemon.name)}
+                  key={pokemon.name}
                 >
+                  {pokemon.name.toUpperCase()}
+                </h3>
+                {PokemonStore.selected.name === pokemon.name
+                  ? <Button
+                    variant='outlined'
+                    onClick={() => history.push('/PokeForm')}
+                  >
               Catch Pokemon
                 </Button>
-                : null}
-            </>
-          ))
-          : <p>Loading</p>}
-      </main>
+                  : null}
+              </>
+            ))
+            : <p>Loading</p>}
+        </main>
+      </Card>
     </div>
   ))
 }
@@ -57,6 +60,17 @@ const useStyles = makeStyles({
   },
   main: {
     marginLeft: 30
+  },
+  root: {
+    width: '80%',
+    margin: '0 auto',
+    backgroundColor: '#FEC26C',
+    textAlign: 'center'
+
+  },
+  catchPoke: {
+    backgroundColor: '#6CA8FE',
+    height: '100vh'
   }
 })
 

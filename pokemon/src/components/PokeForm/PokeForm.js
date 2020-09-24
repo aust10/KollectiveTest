@@ -24,7 +24,7 @@ function PokeForm (props) {
     })
   }
   return (
-    <div>
+    <div className={styles.pokeForm}>
       <Card className={styles.root}>
         <h1 className={styles.header}>{pokemon.selected.name}</h1>
         <hr />
@@ -79,7 +79,8 @@ const useStyles = makeStyles({
   root: {
     width: '60%',
     margin: '0 auto',
-    padding: 10
+    padding: 10,
+    backgroundColor: '#FEC26C'
   },
   details: {
     display: 'flex',
@@ -91,6 +92,10 @@ const useStyles = makeStyles({
   form: {
     display: 'flex',
     justifyContent: 'space-around'
+  },
+  pokeForm: {
+    backgroundColor: '#6CA8FE',
+    height: '100vh'
   }
 })
 

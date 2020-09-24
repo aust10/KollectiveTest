@@ -27,7 +27,7 @@ function CaughtPoke (props) {
                   }}
                   key={pokemon.name}
                 >
-                  {pokemon.name}
+                  {pokemon.name.toUpperCase()}
                 </h3>
               </div>
             ))
@@ -45,12 +45,12 @@ function CaughtPoke (props) {
 
 const useStyles = makeStyles({
   root: {
-    width: '100%',
+    width: '80%',
     display: 'flex',
     marginLeft: '15px',
     marginRight: '15px',
     padding: 15,
-    justifyContent: 'space-around'
+    justifyContent: 'space-between'
   },
   title: {
     margin: 15
