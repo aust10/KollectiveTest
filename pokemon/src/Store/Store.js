@@ -23,6 +23,7 @@ export function createPokemonStore () {
       )
         .then(response => response.json())
         .then(data => {
+          this.pokemon = []
           data.results.forEach(item => {
             fetch(
               `${item.url}`,
@@ -31,7 +32,9 @@ export function createPokemonStore () {
               }
             )
               .then(response => response.json())
-              .then(data => (this.pokemon.push(data)))
+              .then(data => {
+                this.pokemon.push(data)
+              })
           })
           // console.log(data, 'this is yoru data')
           // this.pokemon = data.results
